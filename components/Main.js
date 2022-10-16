@@ -59,7 +59,7 @@ const Main = () => {
             time={post.created}
             text={post.contents}
             getPostDetails={getPostDetails}
-            deletePost={deletePost}
+            deletePostHello={deletePost}
             id={post._id}
             key={post._id}
           />

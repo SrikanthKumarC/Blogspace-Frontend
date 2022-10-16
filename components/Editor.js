@@ -27,7 +27,7 @@ const Editor = ({ tit, message, id, editing, handleReload }) => {
       return (
         <button
           onClick={postData}
-          className="bg-blue-400 px-3 rounded-md text-white"
+          className="bg-blue-600 mt-2 px-3 rounded-md text-white"
         >
           Submit
         </button>
@@ -89,7 +89,7 @@ const Editor = ({ tit, message, id, editing, handleReload }) => {
   };
 
   return (
-    <div className="block p-6  bg-white  border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div className="block p-6  bg-white  border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg rounded-br-none rounded-bl-none">
       <div className="flex justify-between	">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Create New 🗒️
