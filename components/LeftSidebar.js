@@ -1,6 +1,7 @@
 const URL = "http://localhost:9191/posts";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const LeftSidebar = () => {
   const [categories, setCategories] = useState([]);
@@ -23,16 +24,16 @@ const LeftSidebar = () => {
   }, []);
   return (
     <div>
-      <h3 className="text-slate-700 py-1 rounded-r-lg px-3 text-2xl">Spaces</h3>
+      <h3 className="text-slate-700 py-1 rounded-r-lg px-3 text-2xl"><Link href={'/category'}>Spaces</Link></h3>
       <ul className="flex flex-wrap ease-in list-none  rounded max-w-sm ml-2 ">
         {/* <li className="px-2 m-2 my-1 py-1 bg-gray-400 rounded-full">DSA</li> */}
         {categories.map((category, id) => {
           return (
             <li
               key={id}
-              className="px-2 m-2 my-1 py-1 bg-indigo-400 rounded-full"
+              className="px-2 m-2 my-1 py-1 rounded-[12px] border border-gray-400"
             >
-              {category}
+              <Link href={`/category/${category}`}>{category}</Link>
             </li>
           );
         })}

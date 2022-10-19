@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 const URL = "http://localhost:9191/posts";
 
-const Main = () => {
+const Main = ({category = "", editor = true}) => {
   const [posts, setPosts] = useState([]);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
@@ -34,7 +34,7 @@ const Main = () => {
   };
   useEffect(() => {
     axios
-      .get(URL)
+      .get(URL+"/"+category)
       .then((res) => {
         setPosts(res.data);
         console.log(res);
@@ -43,13 +43,13 @@ const Main = () => {
   }, [reload]);
   return (
     <div>
-      <Editor
+      {editor && <Editor
         tit={title}
         message={message}
         id={id}
         handleReload={handleReload}
         editing={isEditing}
-      />
+      />}
       {posts.map((post) => {
         return (
           <Card
@@ -59,7 +59,7 @@ const Main = () => {
             time={post.created}
             text={post.contents}
             getPostDetails={getPostDetails}
-            deletePostHello={deletePost}
+            deletePost={deletePost}
             id={post._id}
             key={post._id}
           />
