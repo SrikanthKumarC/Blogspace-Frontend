@@ -1,30 +1,24 @@
 import Card from "./Card";
 import Editor from "./Editor";
-import axios from "axios";
 import { useEffect, useState } from "react";
 const URL = "http://localhost:9191/posts";
+import usePosts from "../lib/hooks/usePosts";
+import JoditEditor from "./FullEditor";
 
-const Main = ({category = "", editor = true}) => {
-  const [posts, setPosts] = useState([]);
+const Main = ({ category = "", editor = true }) => {
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [id, setId] = useState(null);
   const [isEditing, setisEditing] = useState(false);
   const [reload, setReload] = useState(false);
-
-  const handleReload = () => {
+  
+  const handleReload = () => {  
     setReload(!reload);
+    console.log('inside handleReload')
   };
+  const posts = usePosts(category, reload);
 
-  const deletePost = (idx) => {
-    axios
-      .delete(URL + `/${idx}`)
-      .then(() => {
-        console.log("deleted post");
-        handleReload();
-      })
-      .catch((e) => console.log({ message: e }));
-  };
+
 
   const getPostDetails = (t, msg, id) => {
     setTitle(t);
@@ -32,24 +26,18 @@ const Main = ({category = "", editor = true}) => {
     setId(id);
     setisEditing(true);
   };
-  useEffect(() => {
-    axios
-      .get(URL+"/"+category)
-      .then((res) => {
-        setPosts(res.data);
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  }, [reload]);
+
   return (
     <div>
-      {editor && <Editor
-        tit={title}
-        message={message}
-        id={id}
-        handleReload={handleReload}
-        editing={isEditing}
-      />}
+      {editor && (
+        <Editor
+          tit={title}
+          message={message}
+          id={id}
+          handleReload={handleReload}
+          editing={isEditing}
+        />
+      )}
       {posts.map((post) => {
         return (
           <Card
@@ -59,12 +47,13 @@ const Main = ({category = "", editor = true}) => {
             time={post.created}
             text={post.contents}
             getPostDetails={getPostDetails}
-            deletePost={deletePost}
+            handleReload={handleReload}
             id={post._id}
             key={post._id}
           />
         );
       })}
+      <JoditEditor />
     </div>
   );
 };

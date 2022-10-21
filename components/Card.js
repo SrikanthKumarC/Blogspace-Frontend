@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import moment from "moment/moment";
+import { deletePost } from "../lib/helpers";
 
 const Card = ({
   title = "Noteworthy technology acquisitions 2021",
@@ -9,7 +10,7 @@ const Card = ({
   time = "12 Oct 2012",
   id,
   getPostDetails,
-  deletePost,
+  handleReload
 }) => {
   const { data: session, status } = useSession();
   const parseDate = () => {
@@ -29,7 +30,12 @@ const Card = ({
             >
               Edit
             </button>
-            <button onClick={() => deletePost(id)} className="dark:text-white ml-2">Delete</button>
+            <button
+              onClick={() => deletePost(id, handleReload)}
+              className="dark:text-white ml-2"
+            >
+              Delete
+            </button>
           </>
         );
       }
@@ -39,7 +45,7 @@ const Card = ({
     <div className="block p-6  bg-white  border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <div className="flex justify-between	">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {title} 
+          {title}
         </h5>
       </div>
       <div className="text-gray-900 dark:text-white">
