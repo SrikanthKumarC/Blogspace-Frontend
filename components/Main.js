@@ -3,7 +3,6 @@ import Editor from "./Editor";
 import { useEffect, useState } from "react";
 const URL = "http://localhost:9191/posts";
 import usePosts from "../lib/hooks/usePosts";
-import JoditEditor from "./FullEditor";
 
 const Main = ({ category = "", editor = true }) => {
   const [title, setTitle] = useState("");
@@ -53,7 +52,6 @@ const Main = ({ category = "", editor = true }) => {
           />
         );
       })}
-      <JoditEditor />
     </div>
   );
 };

@@ -37,7 +37,7 @@ const Editor = ({ tit, message, id, editing, handleReload }) => {
           onClick={postData}
           className="bg-blue-600 mt-2 px-3 rounded-md text-white"
         >
-          Submit
+          Create Post
         </button>
       );
     }

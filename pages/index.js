@@ -15,10 +15,10 @@ export default function Home() {
       </Head>
 
       <Nav />
-      <div className="mt-2 sm:grid grid-cols-6 gap-x-1 gap-y-3 grid-flow-row-dense">
-        <div className=" min-h-[50px] col-span-1"><LeftSidebar /></div>
-        <div className="col-span-4"><Main /></div>
-        <div className="col-span-1 pl-4"><RightSidebar /></div>
+      <div className="mt-2 sm:grid grid-cols-6 gap-x-1 gap-y-3 grid-flow-col sm:grid-flow-row ">
+        <div className=" min-h-[50px] col-span-1 "><LeftSidebar /></div>
+        <div className="col-span-1 order-1  px-2 sm:pl-4"><RightSidebar /></div>
+        <div className="col-span-4 order-0"><Main /></div>
       </div>
       <Footer />
     </div>

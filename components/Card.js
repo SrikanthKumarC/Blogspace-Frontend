@@ -1,6 +1,9 @@
 import { useSession } from "next-auth/react";
 import moment from "moment/moment";
 import { deletePost } from "../lib/helpers";
+import {AiFillEdit} from 'react-icons/ai'
+import {MdOutlineDeleteForever} from 'react-icons/md'
+
 
 const Card = ({
   title = "Noteworthy technology acquisitions 2021",
@@ -23,20 +26,20 @@ const Card = ({
     if (status === "authenticated") {
       if (session.user.email === email) {
         return (
-          <>
+          <div className="flex justify-between  mt-2 pt-2">
             <button
               onClick={() => getPostDetails(title, text, id)}
-              className="dark:text-white"
+              className="dark:text-slate-300 text-lg text-slate-700 hover:text-white transition-all"
             >
-              Edit
+              <AiFillEdit />
             </button>
             <button
               onClick={() => deletePost(id, handleReload)}
-              className="dark:text-white ml-2"
+              className="text-red-400 text-xl ml-2"
             >
-              Delete
+              <MdOutlineDeleteForever />
             </button>
-          </>
+          </div>
         );
       }
     }
@@ -44,14 +47,14 @@ const Card = ({
   return (
     <div className="block p-6  bg-white  border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <div className="flex justify-between	">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {title}
         </h5>
       </div>
-      <div className="text-gray-900 dark:text-white">
-        by {author} · {parseDate()}
+      <div className="text-slate-400 dark:text-white mb-2">
+        <p className="text-slate-400 inline-block">{author}</p> · {parseDate()}
       </div>
-      <div className="font-normal text-gray-700 dark:text-gray-400">{text}</div>
+      <div className="font-normal  dark:text-white">{text}</div>
       {showEdit(title, text)}
     </div>
   );
