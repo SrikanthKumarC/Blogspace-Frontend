@@ -44,7 +44,7 @@ const Card = ({
             </button>}
             
           </div>
-          {(sameUser || session.user.email == '19e51a0524@hitam.org' || typeof(session.user.email[0] !== 'number')) && <button
+          {(sameUser || session.user.email == '19e51a0524@hitam.org' || isNaN(session.user.email[0] == true)) && <button
             onClick={() => deletePost(id, handleReload)}
             className="text-red-400 text-xl ml-2"
           >
