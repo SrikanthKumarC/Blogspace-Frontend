@@ -19,7 +19,7 @@ const Post = () => {
   const { data: session, status } = useSession();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState(null);
-  
+
   const config = useMemo(() => {
     return {
       readonly: false, // all options from https://xdsoft.net/jodit/doc/,
@@ -60,6 +60,7 @@ const Post = () => {
         secondary: "#0f0f",
       },
     });
+    
   return (
     <>
       <Nav />
