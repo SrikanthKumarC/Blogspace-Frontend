@@ -52,7 +52,7 @@ const Teacher = () => {
   };
   let showTeacher = 'hidden';
   if (status === "authenticated") {
-     showTeacher = typeof(!isNaN(session.user.email[0]) || session.user.email === '19e51a0524@hitam.org') ? 'block' : 'hidden';
+     showTeacher = typeof(isNaN(session.user.email[0] == true) || session.user.email === '19e51a0524@hitam.org') ? 'block' : 'hidden';
   }
   return (
     <div >
