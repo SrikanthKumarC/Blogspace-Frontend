@@ -44,12 +44,12 @@ const Card = ({
             </button>}
             
           </div>
-          <button
+          {sameUser && <button
             onClick={() => deletePost(id, handleReload)}
             className="text-red-400 text-xl ml-2"
           >
             <MdOutlineDeleteForever />
-          </button>
+          </button>}
         </div>
       );
     }
