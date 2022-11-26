@@ -50,10 +50,7 @@ const Teacher = () => {
       );
     }
   };
-  let showTeacher = 'hidden';
-  if (status === "authenticated") {
-     showTeacher = typeof(isNaN(session.user.email[0] == true) || session.user.email === '19e51a0524@hitam.org') ? 'block' : 'hidden';
-  }
+
   return (
     <div >
       <Nav teacher={true}  />
@@ -61,7 +58,7 @@ const Teacher = () => {
         <h2>Your Profile</h2>
         {showProfileData()}
       </div>
-      <div className={showTeacher}>
+      <div>
         <div className="overflow-x-auto relative">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -75,9 +72,7 @@ const Teacher = () => {
                 <th scope="col" className="py-3 px-6">
                   Roll Number
                 </th>
-                <th scope="col" className="py-3 px-6">
-                   Delete 
-                   </th>
+    
               </tr>
             </thead>
             <tbody>
@@ -92,7 +87,6 @@ const Teacher = () => {
                     </th>
                     <td className="py-4 px-6">{post.email}</td>
                     <td className="py-4 px-6">{post.email.substring(0, post.email.indexOf("@"))}</td>
-                    <td className="py-4 px-6" onClick={() => deletePost(post._id, handleReload)}>Delete</td>
                   </tr>
                 );
               })}
