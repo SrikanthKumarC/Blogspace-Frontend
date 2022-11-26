@@ -136,6 +136,7 @@ const Nav = ({home = false, student = false, teacher = false }) => {
               </a>
             </li>
             </Link>
+            <Link href={'/contact'}>
             <li>
               <a
                 href="#"
@@ -144,6 +145,7 @@ const Nav = ({home = false, student = false, teacher = false }) => {
                 Contact
               </a>
             </li>
+            </Link>
           </ul>
         </div>
         <div className="mt-4 md:mt-0">
