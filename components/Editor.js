@@ -120,8 +120,8 @@ const Editor = ({ tit, message, id, editing, handleReload }) => {
       </p>
       {showEditOrSubmit()}
       <Dropdown handleCategory={handleCategory} />
-      <div onClick={handleUpload} className='cursor-pointer text-black flex flex-wrap dark:text-white'><RiAttachment2 fill='#000' className='mt-1 dark:fill-black'/> Attach</div>
-      <Upload hidden={upload} />
+      {/* <div onClick={handleUpload} className='cursor-pointer text-black flex flex-wrap dark:text-white'><RiAttachment2 fill='#000' className='mt-1 dark:fill-black'/> Attach</div>
+      <Upload hidden={upload} /> */}
     </div>
   );
 };
