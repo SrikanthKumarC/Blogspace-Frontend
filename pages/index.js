@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Nav />
+      <Nav home={true}/>
       <div className="mt-2 sm:grid grid-cols-6 gap-x-1 gap-y-3 grid-flow-col sm:grid-flow-row ">
         <div className=" min-h-[50px] col-span-1 "><LeftSidebar /></div>
         <div className="col-span-1 order-1  px-2 sm:pl-4"><RightSidebar /></div>

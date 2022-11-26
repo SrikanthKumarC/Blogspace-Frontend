@@ -13,7 +13,6 @@ const Main = ({ category = "", editor = true }) => {
   
   const handleReload = () => {  
     setReload(!reload);
-    console.log('inside handleReload')
   };
   const posts = usePosts(category, reload);
 

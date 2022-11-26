@@ -1,8 +1,12 @@
 import { useSession } from "next-auth/react";
 import moment from "moment/moment";
+import { useState } from "react";
 import { deletePost } from "../lib/helpers";
-import {AiFillEdit} from 'react-icons/ai'
-import {MdOutlineDeleteForever} from 'react-icons/md'
+import { AiFillEdit } from "react-icons/ai";
+import { MdOutlineDeleteForever } from "react-icons/md";
+import { BiCommentDetail } from "react-icons/bi";
+import CommentInput from "./CommentInput";
+import Comments from "./Comments";
 
 
 const Card = ({
@@ -13,7 +17,8 @@ const Card = ({
   time = "12 Oct 2012",
   id,
   getPostDetails,
-  handleReload
+  handleReload,
+  edit = true,
 }) => {
   const { data: session, status } = useSession();
   const parseDate = () => {
@@ -22,26 +27,31 @@ const Card = ({
     return <p className="text-slate-400 inline">{timeA.from(timeB)}</p>;
   };
 
+  const [showComments, setShowComments] = useState(false);
+
   const showEdit = () => {
     if (status === "authenticated") {
-      if (session.user.email === email) {
-        return (
-          <div className="flex justify-between  mt-2 pt-2">
-            <button
+      const sameUser = email === session.user.email;
+      const hidden = sameUser ? "" : "hidden";
+      return (
+        <div className="flex justify-between  mt-2 pt-2">
+          <div>
+            {edit && <button
               onClick={() => getPostDetails(title, text, id)}
-              className="dark:text-slate-300 text-lg text-slate-700 hover:text-white transition-all"
+              className={`${hidden} dark:text-slate-300 text-lg text-slate-700 hover:text-white transition-all`}
             >
               <AiFillEdit />
-            </button>
-            <button
-              onClick={() => deletePost(id, handleReload)}
-              className="text-red-400 text-xl ml-2"
-            >
-              <MdOutlineDeleteForever />
-            </button>
+            </button>}
+            
           </div>
-        );
-      }
+          <button
+            onClick={() => deletePost(id, handleReload)}
+            className="text-red-400 text-xl ml-2"
+          >
+            <MdOutlineDeleteForever />
+          </button>
+        </div>
+      );
     }
   };
   return (
@@ -54,8 +64,17 @@ const Card = ({
       <div className="text-slate-400 dark:text-white mb-2">
         <p className="text-slate-400 inline-block">{author}</p> · {parseDate()}
       </div>
-      <div className="font-normal  dark:text-white">{text}</div>
+      <div className="font-normal  dark:text-white" dangerouslySetInnerHTML={{ __html: text }}></div>
       {showEdit(title, text)}
+      {showComments && <CommentInput id={id} />}
+      <button
+              onClick={() => setShowComments(!showComments)}
+              className="dark:text-slate-300 text-lg text-slate-700 hover:text-white transition-all"
+            >
+              {" "}
+              <BiCommentDetail />{" "}
+            </button>
+      {showComments && <Comments id={id} />}
     </div>
   );
 };

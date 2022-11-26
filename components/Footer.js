@@ -1,18 +1,18 @@
 const Footer = () => {
   return (
-    <footer className="mt-4 p-4 bg-white sm:p-6 dark:bg-gray-900">
+    <footer className="mt-4 p-4 bg-green-200 sm:p-6 dark:bg-gray-900">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <a href="https://flowbite.com/" className="flex items-center">
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Blog Space
+              HITAM Blog Space
             </span>
           </a>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
             <h2 className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              first Year
+              featured resources
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-1">
@@ -39,65 +39,13 @@ const Footer = () => {
                   BEE
                 </a>
               </li>
-              <li className="mb-1">
-                <a
-                  href="https://mrcet.com/downloads/hs/EWS-ITWS%20%20LAB%20MANUAL.pdf"
-                  className="hover:underline"
-                >
-                  Eng. Workshop
-                </a>
-              </li>
-              <li className="mb-1">
-                <a
-                  href="https://mrcet.com/downloads/digital_notes/HS/R-18%20Professional%20English.pdf"
-                  className="hover:underline"
-                >
-                  English
-                </a>
-              </li>
-              <li className="mb-1">
-                <a
-                  href="https://drive.google.com/drive/folders/18fNkH50sM6y6lcBcOfTNJxjhcIWhIp37"
-                  className="hover:underline"
-                >
-                  M2
-                </a>
-              </li>
-              <li className="mb-1">
-                <a
-                  href="https://drive.google.com/drive/folders/11qqGTjERIPRYJSAY_rE2cCM3OiZvMqof"
-                  className="hover:underline"
-                >
-                  AP
-                </a>
-              </li>
-              <li className="mb-1">
-                <a
-                  href="https://drive.google.com/drive/folders/13oiR_1t64tKQ4aIwWDvK0dNmYx0yrnw6"
-                  className="hover:underline"
-                >
-                  PPS
-                </a>
-              </li>
-              <li className="mb-1">
-                <a
-                  href="https://drive.google.com/drive/folders/10Q_ousxsu_Wc5VJ2hfTzjxPN4GWyxoD5"
-                  className="hover:underline"
-                >
-                  Eng. Graphics
-                </a>
-              </li>
+             
             </ul>
           </div>
-          <div>
-            <h2 className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Second Year
-            </h2>
-            <ul className="text-gray-600 dark:text-gray-400"></ul>
-          </div>
+         
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Follow us
+              Enquire
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
@@ -105,7 +53,7 @@ const Footer = () => {
                   href="https://github.com/themesberg/flowbite"
                   className="hover:underline "
                 >
-                  M1
+                  Suggestions
                 </a>
               </li>
               <li>
@@ -113,7 +61,7 @@ const Footer = () => {
                   href="https://discord.gg/4eeurUVvTy"
                   className="hover:underline"
                 >
-                  Discord
+                  Complaints
                 </a>
               </li>
             </ul>
@@ -142,7 +90,7 @@ const Footer = () => {
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © 2022{" "}
           <a href="https://flowbite.com/" className="hover:underline">
-            Flowbite™
+            HITAM Blog Space
           </a>
           . All Rights Reserved.
         </span>

@@ -1,25 +1,42 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Link from "next/link";
+import toast, { Toaster } from "react-hot-toast";
 
-const Nav = () => {
+import Link from "next/link";
+const notify = () =>
+  toast("ACCESS DENIED: HITAM USERS ONLY", {
+  icon: '',
+  iconTheme: {
+    primary: "#000",
+    secondary: "#0f0f",
+  },
+});
+const Nav = ({home = false, student = false, teacher = false }) => {
   const [userToggle, setUserToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const { data: session, status } = useSession();
   console.log(session);
 
   useEffect(() => {
-    if( status !== 'authenticated')  {
-      setUserToggle(true)
+    if (status !== "authenticated") {
+      setUserToggle(true);
     }
-  }, [status])
+  }, [status]);
 
   const hid = menuToggle ? "" : "hidden";
 
+  const active = 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
+  const notActive = 'block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
+
+
+
   const showUserDetails = () => {
     if (userToggle) {
+      const regex = '^[A-Za-z0-9._%+-]+@hitam\.org$'
+      const pattern = new RegExp(regex)            
       if (status === "authenticated") {
+        if (!pattern.test(session.user.email))  {notify(); signOut();  return; }
         return (
           <div className="login-logout flex justify-center flex-wrap sm:mt-2">
             <p className="dark:text-white mx-2">Welcome {session.user.name}</p>
@@ -47,21 +64,24 @@ const Nav = () => {
     }
   };
 
+
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+    <nav className="bg-green-200 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <Link href='/'>  
-        <a href="https://blogspace.com/" className="flex items-center">
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            Blog Space
-          </span>
-        </a>
+        <Link href="/">
+          <a href="https://blogspace.com/" className="flex items-center">
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              HITAM Blog Space
+            </span>
+          </a>
         </Link>
+      <Toaster />
+
         <button
           onClick={() => setMenuToggle(!menuToggle)}
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="transition-all inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -80,36 +100,42 @@ const Nav = () => {
             ></path>
           </svg>
         </button>
-        <div className={`${hid} w-full md:block md:w-auto`} id="navbar-default">
+        <div
+          className={`${hid} transition-all w-full md:block md:w-auto`}
+          id="navbar-default"
+        >
           <ul className="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <Link href="/">
               <li>
                 <a
                   href="#"
-                  className="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                  className={home ? active : notActive}
                   aria-current="page"
                 >
                   Home
                 </a>
               </li>
             </Link>
+            <Link href={'/student'}>
+              <li>
+                <a
+                  href="#"
+                  className={student ? active : notActive}
+                  >
+                  Student Blog
+                </a>
+              </li>
+            </Link>
+            <Link href={'/teacher'}>
             <li>
               <a
                 href="#"
-                className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Student Blog
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
+                className={teacher ? active : notActive}
+               >
                 Teacher Blog
               </a>
             </li>
-
+            </Link>
             <li>
               <a
                 href="#"
