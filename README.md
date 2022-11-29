@@ -10,8 +10,8 @@ A place for students and teachers to interact and learn.
 
 ## How to use
 1. Login by clicking on the profile picture on the menu
-2. Use your college email id to login (only works for @hitam.org emails)
-3. Post content and see others posts
+2. Use your college email id to login (only works with @hitam.org emails)
+3. Post content and read others posts
 
 ## Technologies - Frontend
 + Next.js
