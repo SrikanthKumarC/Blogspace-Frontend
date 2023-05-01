@@ -1,4 +1,4 @@
-const URL = "http://localhost:9191/posts";
+const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
 import {RiAttachment2} from 'react-icons/ri'
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
