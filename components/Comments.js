@@ -7,13 +7,13 @@ const Comments = ({ id }) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    axios.get(`${URL}/${id}/comments`).then((res) => {
+    axios.get(`${URL}/comment/${id}/comments`).then((res) => {
       setComments(res.data);
     });
   }, [id]);
 
   const handleDelete = (commentId) => {
-    axios.delete(`${URL}/${id}/comment/${commentId}`).then((res) => {
+    axios.delete(`${URL}/comment/${id}/comment/${commentId}`).then((res) => {
       console.log(res);
       setComments(comments.filter((comment) => comment._id !== commentId));
     });

@@ -14,7 +14,7 @@ const CommentInput = ({id}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (status === "authenticated") {
-      const res = await axios.post(`${URL}/${id}/comment`, {
+      const res = await axios.post(`${URL}/comment/${id}/comment`, {
         comment,
         email: session.user.email,
         name: session.user.name,

@@ -79,7 +79,7 @@ const Editor = ({ tit, message, id, editing, handleReload }) => {
       if (title === null || title === "" || text === null || text === "")
         return;
       axios
-        .patch(URL + `/${id}`, {
+        .patch(URL + `/singlePost/${id}`, {
           title,
           contents: text,
           name: session.user.name,
