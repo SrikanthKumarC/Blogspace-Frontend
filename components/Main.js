@@ -2,6 +2,7 @@ import Card from "./Card";
 import Editor from "./Editor";
 import { useEffect, useState } from "react";
 const URL = process.env.NEXT_PUBLIC_POST_URL;
+console.log(URL);
 import usePosts from "../lib/hooks/usePosts";
 
 const Main = ({ category = "", editor = true }) => {
@@ -10,13 +11,11 @@ const Main = ({ category = "", editor = true }) => {
   const [id, setId] = useState(null);
   const [isEditing, setisEditing] = useState(false);
   const [reload, setReload] = useState(false);
-  
-  const handleReload = () => {  
+
+  const handleReload = () => {
     setReload(!reload);
   };
   const posts = usePosts(category, reload);
-
-
 
   const getPostDetails = (t, msg, id) => {
     setTitle(t);
