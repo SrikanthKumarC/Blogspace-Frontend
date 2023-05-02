@@ -5,6 +5,9 @@ import LeftSidebar from '../components/LeftSidebar'
 import Main from '../components/Main'
 import Footer from '../components/Footer'
 import RightSidebar from '../components/RightSidebar'
+
+
+
 export default function Home() {
   return (
     <div className={styles.container}>

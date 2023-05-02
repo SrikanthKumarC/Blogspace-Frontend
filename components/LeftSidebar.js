@@ -1,4 +1,4 @@
-const URL = "http://localhost:9191/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Link from "next/link";

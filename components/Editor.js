@@ -1,4 +1,4 @@
-const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 import {RiAttachment2} from 'react-icons/ri'
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";

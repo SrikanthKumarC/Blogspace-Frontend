@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 import Image from "next/image";
 
 const Comments = ({ id }) => {

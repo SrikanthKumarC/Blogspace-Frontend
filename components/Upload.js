@@ -18,7 +18,7 @@ const Upload = ({hidden = true}) => {
         }
       };
       const API = "upload";
-      const HOST = "http://localhost:9191";
+      const HOST = process.env.NEXT_PUBLIC_HOST_URL;
       const url = `${HOST}/${API}`;
       
       const result = await axios.post(url, formData, config);

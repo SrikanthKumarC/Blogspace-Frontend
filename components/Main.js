@@ -1,7 +1,7 @@
 import Card from "./Card";
 import Editor from "./Editor";
 import { useEffect, useState } from "react";
-const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 import usePosts from "../lib/hooks/usePosts";
 
 const Main = ({ category = "", editor = true }) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
-const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);

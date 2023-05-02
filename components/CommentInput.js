@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 import toast, { Toaster } from 'react-hot-toast';
 
 const notify = (text = 'comment created') => toast(text);

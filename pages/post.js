@@ -1,6 +1,6 @@
 import Nav from "../components/Nav";
 import { MdOutlineDownloadDone } from "react-icons/md";
-const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
+const URL = process.env.NEXT_PUBLIC_POST_URL;
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
