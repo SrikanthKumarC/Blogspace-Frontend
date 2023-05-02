@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
-const URL = "http://localhost:9191/posts";
+const URL = "https://cobalt-blue-pike-vest.cyclic.app/posts";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
