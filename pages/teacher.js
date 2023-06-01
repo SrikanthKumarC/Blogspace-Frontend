@@ -5,12 +5,22 @@ import Image from "next/image";
 import usePosts from "../lib/hooks/usePosts";
 import axios from "axios";
 import { deletePost } from "../lib/helpers";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const Teacher = () => {
   const { data: session, status } = useSession();
-  const posts = usePosts('', '');
+  // const posts = usePosts('', '');
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'http://localhost:9191/posts/uniqueUsers',
+      );
+      setPosts(result.data);
+    };
+    fetchData();
+  }, []);
   const [reload, setRelaod] = useState(false);
   const handleReload =()  => {
     setRelaod(!reload)
