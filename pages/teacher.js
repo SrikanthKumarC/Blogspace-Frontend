@@ -2,9 +2,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
-import usePosts from "../lib/hooks/usePosts";
 import axios from "axios";
-import { deletePost } from "../lib/helpers";
 import { useEffect, useState } from "react";
 
 
@@ -21,10 +19,7 @@ const Teacher = () => {
     };
     fetchData();
   }, []);
-  const [reload, setRelaod] = useState(false);
-  const handleReload =()  => {
-    setRelaod(!reload)
-  }
+
   const showProfileData = () => {
     if (status === "authenticated") {
       return (
