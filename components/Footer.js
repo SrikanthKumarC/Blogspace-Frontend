@@ -1,3 +1,6 @@
+import format from "date-fns/format";
+
+
 const Footer = () => {
   return (
     <footer className="mt-4 p-4 bg-green-200 sm:p-6 dark:bg-gray-900">
@@ -88,7 +91,7 @@ const Footer = () => {
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="sm:flex sm:items-center sm:justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2022{" "}
+          © {format(new Date(), 'yyyy')}{" "}
           <a href="https://flowbite.com/" className="hover:underline">
             HITAM Blog Space
           </a>
