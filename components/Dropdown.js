@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-const Dropdown = ({ handleCategory }) => {
+const Dropdown = ({ handleCategory, categorry }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const listclass = dropdownOpen ? "" : "hidden";
   const categories = ["DSA", "ML", "AI", "WebDev"];
-  const [cats, setCats] = useState(null);
+  const [cats, setCats] = useState(categorry);
+
+
 
 
   return (

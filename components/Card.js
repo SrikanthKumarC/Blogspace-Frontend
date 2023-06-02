@@ -19,6 +19,7 @@ const Card = ({
   getPostDetails,
   handleReload,
   edit = true,
+  category = 'ML'
 }) => {
   const { data: session, status } = useSession();
   const parseDate = () => {
@@ -37,7 +38,7 @@ const Card = ({
         <div className="flex justify-between  mt-2 pt-2">
           <div>
             {edit && <button
-              onClick={() => getPostDetails(title, text, id)}
+              onClick={() => getPostDetails(title, text, id, category)}
               className={`${hidden} dark:text-slate-300 text-lg text-slate-700 hover:text-white transition-all`}
             >
               <AiFillEdit />
