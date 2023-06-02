@@ -1,11 +1,10 @@
 const URL = process.env.NEXT_PUBLIC_POST_URL;
-import {RiAttachment2} from 'react-icons/ri'
+import { RiAttachment2 } from "react-icons/ri";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Dropdown from "./Dropdown";
 import Upload from "./Upload";
-
 
 const Editor = ({ tit, message, id, editing, handleReload, categoryy }) => {
   const { data: session, status } = useSession();
@@ -16,7 +15,7 @@ const Editor = ({ tit, message, id, editing, handleReload, categoryy }) => {
 
   const handleUpload = () => {
     setUpload(!upload);
-  }
+  };
 
   //show sumbit or edit button
   const showEditOrSubmit = () => {
@@ -24,7 +23,12 @@ const Editor = ({ tit, message, id, editing, handleReload, categoryy }) => {
       return (
         <button
           onClick={() => {
-            patchData();
+              console.log(category)
+            if (category === null || category === undefined || category === "") {
+              alert("category cannot be null");
+            } else {
+              patchData();
+            }
           }}
           className="bg-blue-400 px-3 rounded-md text-white"
         >
@@ -62,7 +66,7 @@ const Editor = ({ tit, message, id, editing, handleReload, categoryy }) => {
           contents: text,
           name: session.user.name,
           email: session.user.email,
-          category: category ? category : 'general',
+          category: category ? category : "general",
         })
         .then((res) => {
           console.log({ message: res });
@@ -119,7 +123,7 @@ const Editor = ({ tit, message, id, editing, handleReload, categoryy }) => {
         ></textarea>
       </p>
       {showEditOrSubmit()}
-      <Dropdown handleCategory={handleCategory} categorry={categoryy}/>
+      <Dropdown handleCategory={handleCategory} categorry={categoryy} />
       {/* <div onClick={handleUpload} className='cursor-pointer text-black flex flex-wrap dark:text-white'><RiAttachment2 fill='#000' className='mt-1 dark:fill-black'/> Attach</div>
       <Upload hidden={upload} /> */}
     </div>
