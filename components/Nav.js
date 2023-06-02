@@ -2,8 +2,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
-import styles from "./Nav.module.css";
 import Link from "next/link";
+
 const notify = () =>
   toast("ACCESS DENIED: HITAM USERS ONLY", {
     icon: "",
@@ -12,6 +12,7 @@ const notify = () =>
       secondary: "#0f0f",
     },
   });
+  
 const Nav = ({ home = false, student = false, teacher = false }) => {
   const [userToggle, setUserToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
