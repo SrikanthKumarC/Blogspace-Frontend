@@ -7,11 +7,11 @@ import Dropdown from "./Dropdown";
 import Upload from "./Upload";
 
 
-const Editor = ({ tit, message, id, editing, handleReload }) => {
+const Editor = ({ tit, message, id, editing, handleReload, categoryy }) => {
   const { data: session, status } = useSession();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState(categoryy);
   const [upload, setUpload] = useState(true);
 
   const handleUpload = () => {
@@ -119,7 +119,7 @@ const Editor = ({ tit, message, id, editing, handleReload }) => {
         ></textarea>
       </p>
       {showEditOrSubmit()}
-      <Dropdown handleCategory={handleCategory} />
+      <Dropdown handleCategory={handleCategory} categorry={categoryy}/>
       {/* <div onClick={handleUpload} className='cursor-pointer text-black flex flex-wrap dark:text-white'><RiAttachment2 fill='#000' className='mt-1 dark:fill-black'/> Attach</div>
       <Upload hidden={upload} /> */}
     </div>

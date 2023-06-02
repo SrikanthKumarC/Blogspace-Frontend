@@ -11,17 +11,18 @@ const Main = ({ category = "", editor = true }) => {
   const [id, setId] = useState(null);
   const [isEditing, setisEditing] = useState(false);
   const [reload, setReload] = useState(false);
-
+  const [categoryy, setCategoryy] = useState("");
   const handleReload = () => {
     setReload(!reload);
   };
   const posts = usePosts(category, reload);
 
-  const getPostDetails = (t, msg, id) => {
+  const getPostDetails = (t, msg, id, category) => {
     setTitle(t);
     setMessage(msg);
     setId(id);
     setisEditing(true);
+    setCategoryy(category);
   };
 
   return (
@@ -33,6 +34,7 @@ const Main = ({ category = "", editor = true }) => {
           id={id}
           handleReload={handleReload}
           editing={isEditing}
+          categoryy={categoryy}
         />
       )}
       {posts.map((post) => {
@@ -46,6 +48,7 @@ const Main = ({ category = "", editor = true }) => {
             getPostDetails={getPostDetails}
             handleReload={handleReload}
             id={post._id}
+            category={post.category}
             key={post._id}
           />
         );
