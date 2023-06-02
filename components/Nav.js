@@ -12,7 +12,7 @@ const notify = () =>
       secondary: "#0f0f",
     },
   });
-  
+
 const Nav = ({ home = false, student = false, teacher = false }) => {
   const [userToggle, setUserToggle] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
@@ -157,7 +157,7 @@ const Nav = ({ home = false, student = false, teacher = false }) => {
               }
               width="42"
               height="42"
-              className={`rounded-full ${styles.round} round-here cursor-pointer`}
+              className={`rounded-full cursor-pointer`}
               alt="profile"
             />
           </div>
